@@ -4,6 +4,11 @@ A full-stack serverless application built with AWS CDK, featuring a REST API pow
 
 ![AWS Architecture](https://img.shields.io/badge/AWS-CDK-orange) ![TypeScript](https://img.shields.io/badge/TypeScript-5.6-blue) ![Next.js](https://img.shields.io/badge/Next.js-15.3-black) ![License](https://img.shields.io/badge/license-MIT-green)
 
+<img width="3781" height="1745" alt="image" src="https://github.com/user-attachments/assets/17cb1341-e24a-401b-a85c-ee16eea4db53" />
+<img width="3786" height="1772" alt="image" src="https://github.com/user-attachments/assets/6c488d32-ea06-4f0f-b581-733055c8e466" />
+
+
+
 ## 🏗️ Architecture
 
 ```
