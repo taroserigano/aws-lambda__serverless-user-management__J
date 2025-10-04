@@ -1,0 +1,9 @@
+{
+  "DynamoDBStack": {
+    "ExportsOutputFnGetAttUsersTable9725E9C8Arn5684EF99": "arn:aws:dynamodb:us-east-2:048249931781:table/DynamoDBStack-users-table",
+    "ExportsOutputRefUsersTable9725E9C857961836": "DynamoDBStack-users-table"
+  },
+  "UsersApiStack": {
+    "HttpApiUrl": "https://vszofutd55.execute-api.us-east-2.amazonaws.com/"
+  }
+}
