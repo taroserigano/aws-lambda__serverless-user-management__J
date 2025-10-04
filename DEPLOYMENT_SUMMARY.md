@@ -14,18 +14,21 @@
 ### Backend (Lambda) Features
 
 1. **Bulk User Creation** (`POST /users/bulk`)
+
    - Create multiple random users at once (1-100 users)
    - Uses Faker.js to generate realistic test data
    - Batch writes to DynamoDB (25 items per batch)
    - Usage: `POST /users/bulk` with `{"count": 10}`
 
 2. **User Search** (`GET /users/search`)
+
    - Search users by name or email
    - Case-insensitive partial matching
    - Returns filtered results
    - Usage: `GET /users/search?q=john`
 
 3. **User Statistics** (`GET /users/stats`)
+
    - Total user count
    - Users created today count
    - Real-time statistics
@@ -40,12 +43,14 @@
 ### Frontend (Next.js) Features
 
 1. **Statistics Dashboard**
+
    - Real-time user count display
    - "Created Today" counter
    - Auto-refresh every 30 seconds
    - Beautiful gradient UI cards
 
 2. **Search Bar**
+
    - Live search functionality
    - Enter key support
    - Result count display
@@ -61,23 +66,24 @@
 
 ## 📋 Complete API Endpoints
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/users` | Get all users |
-| POST | `/users` | Create a single user |
-| POST | `/users/bulk` | Bulk create random users (1-100) |
-| GET | `/users/search?q={query}` | Search users by name/email |
-| GET | `/users/stats` | Get user statistics |
-| GET | `/users/export` | Export all users as JSON |
-| GET | `/users/{id}` | Get user by ID |
-| PUT | `/users/{id}` | Update user |
-| DELETE | `/users/{id}` | Delete user |
+| Method | Endpoint                  | Description                      |
+| ------ | ------------------------- | -------------------------------- |
+| GET    | `/users`                  | Get all users                    |
+| POST   | `/users`                  | Create a single user             |
+| POST   | `/users/bulk`             | Bulk create random users (1-100) |
+| GET    | `/users/search?q={query}` | Search users by name/email       |
+| GET    | `/users/stats`            | Get user statistics              |
+| GET    | `/users/export`           | Export all users as JSON         |
+| GET    | `/users/{id}`             | Get user by ID                   |
+| PUT    | `/users/{id}`             | Update user                      |
+| DELETE | `/users/{id}`             | Delete user                      |
 
 ---
 
 ## 🧪 Testing Examples
 
 ### Test Bulk Creation
+
 ```bash
 curl -k -X POST "https://vszofutd55.execute-api.us-east-2.amazonaws.com/users/bulk" \
   -H "Content-Type: application/json" \
@@ -85,16 +91,19 @@ curl -k -X POST "https://vszofutd55.execute-api.us-east-2.amazonaws.com/users/bu
 ```
 
 ### Test Search
+
 ```bash
 curl -k "https://vszofutd55.execute-api.us-east-2.amazonaws.com/users/search?q=Neal"
 ```
 
 ### Test Statistics
+
 ```bash
 curl -k "https://vszofutd55.execute-api.us-east-2.amazonaws.com/users/stats"
 ```
 
 ### Test Export
+
 ```bash
 curl -k "https://vszofutd55.execute-api.us-east-2.amazonaws.com/users/export" > users.json
 ```
@@ -104,11 +113,13 @@ curl -k "https://vszofutd55.execute-api.us-east-2.amazonaws.com/users/export" > 
 ## 📁 Files Modified
 
 ### Backend (aws-users-api/)
+
 - ✅ `src/lambda/handler.ts` - Added 4 new Lambda functions
 - ✅ `lib/users-api-stack.ts` - Added routes for new endpoints
 - ✅ All infrastructure files have detailed JSDoc comments
 
 ### Frontend (nextjs-frontend-app/)
+
 - ✅ `lib/api.ts` - Added `bulkCreateUsers()`, `searchUsers()`, `getUserStats()`, `exportUsers()`
 - ✅ `components/BulkActions.tsx` - **NEW** Bulk operations UI
 - ✅ `components/UserCRUD.tsx` - Integrated BulkActions component
@@ -164,21 +175,25 @@ curl -k "https://vszofutd55.execute-api.us-east-2.amazonaws.com/users/export" > 
 ## 💡 Feature Highlights
 
 ### Smart Batch Processing
+
 - Lambda automatically splits bulk creates into batches of 25 (DynamoDB limit)
 - Progress tracked for each batch
 - Error handling per batch
 
 ### Efficient Search
+
 - DynamoDB scan with filters
 - Case-insensitive matching
 - Returns only matching users
 
 ### Real-time Statistics
+
 - Counts users created within last 24 hours
 - Uses ISO timestamp comparison
 - Efficient single-pass calculation
 
 ### Professional Export
+
 - Pretty-printed JSON (2-space indentation)
 - Content-Disposition header for download
 - Proper MIME type (application/json)
@@ -200,6 +215,7 @@ curl -k "https://vszofutd55.execute-api.us-east-2.amazonaws.com/users/export" > 
 ## 🔧 Tech Stack
 
 ### Backend
+
 - AWS CDK 2.200.1
 - TypeScript 5.6.3
 - Node.js 22.x (Lambda runtime)
@@ -208,6 +224,7 @@ curl -k "https://vszofutd55.execute-api.us-east-2.amazonaws.com/users/export" > 
 - esbuild for Lambda bundling
 
 ### Frontend
+
 - Next.js 15.3.4 with Turbopack
 - React 19
 - TypeScript
@@ -233,7 +250,7 @@ curl -k "https://vszofutd55.execute-api.us-east-2.amazonaws.com/users/export" > 
 ✅ **UsersApiStack** - Deployed with all new routes  
 ✅ **Lambda Handler** - Updated with 9 functions  
 ✅ **Frontend** - Running on localhost:3000  
-✅ **All Endpoints** - Tested and working  
+✅ **All Endpoints** - Tested and working
 
 ---
 
@@ -253,6 +270,7 @@ curl -k "https://vszofutd55.execute-api.us-east-2.amazonaws.com/users/export" > 
 ## 📝 Documentation
 
 All infrastructure files now include:
+
 - JSDoc comments explaining each construct
 - Parameter descriptions
 - Usage examples

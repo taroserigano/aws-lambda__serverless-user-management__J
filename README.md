@@ -53,6 +53,7 @@ A full-stack serverless application built with AWS CDK, featuring a REST API pow
 ## ✨ Features
 
 ### Backend Features
+
 - ✅ **Full CRUD Operations** - Create, Read, Update, Delete users
 - ✅ **Bulk User Creation** - Generate 1-100 random users with Faker.js
 - ✅ **Smart Search** - Search by name or email with case-insensitive matching
@@ -62,6 +63,7 @@ A full-stack serverless application built with AWS CDK, featuring a REST API pow
 - ✅ **Error Handling** - Comprehensive error handling and logging
 
 ### Frontend Features
+
 - ✅ **Modern UI** - Built with shadcn/ui and Tailwind CSS
 - ✅ **Statistics Dashboard** - Real-time user metrics with auto-refresh
 - ✅ **Live Search** - Instant search with debouncing
@@ -73,6 +75,7 @@ A full-stack serverless application built with AWS CDK, featuring a REST API pow
 ## 🚀 Quick Start
 
 ### Prerequisites
+
 - Node.js 18+ and npm
 - AWS CLI configured with valid credentials
 - AWS CDK CLI (`npm install -g aws-cdk`)
@@ -80,26 +83,31 @@ A full-stack serverless application built with AWS CDK, featuring a REST API pow
 ### Backend Deployment
 
 1. **Navigate to the backend directory**
+
    ```bash
    cd aws-users-api
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
 3. **Build the project**
+
    ```bash
    npm run build
    ```
 
 4. **Deploy to AWS**
+
    ```bash
    npm run cdk -- deploy --all
    ```
 
    This will deploy:
+
    - DynamoDB table
    - Lambda function
    - API Gateway HTTP API
@@ -113,23 +121,27 @@ A full-stack serverless application built with AWS CDK, featuring a REST API pow
 ### Frontend Setup
 
 1. **Navigate to the frontend directory**
+
    ```bash
    cd nextjs-frontend-app
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
 3. **Update the API URL**
-   
+
    Edit `lib/api.ts` and update the `API_URL` constant with your deployed API Gateway URL:
+
    ```typescript
    const API_URL = "https://your-api-id.execute-api.us-east-2.amazonaws.com";
    ```
 
 4. **Start the development server**
+
    ```bash
    npm run dev
    ```
@@ -186,6 +198,7 @@ A full-stack serverless application built with AWS CDK, featuring a REST API pow
 ## 🔧 Technology Stack
 
 ### Backend
+
 - **AWS CDK** - Infrastructure as Code
 - **AWS Lambda** - Serverless compute (Node.js 22.x)
 - **API Gateway HTTP API** - RESTful API endpoint
@@ -196,6 +209,7 @@ A full-stack serverless application built with AWS CDK, featuring a REST API pow
 - **esbuild** - Fast Lambda bundling
 
 ### Frontend
+
 - **Next.js 15.3** - React framework with Turbopack
 - **React 19** - UI library
 - **TypeScript** - Type safety
@@ -207,6 +221,7 @@ A full-stack serverless application built with AWS CDK, featuring a REST API pow
 ## 📡 API Reference
 
 ### Base URL
+
 ```
 https://your-api-id.execute-api.region.amazonaws.com
 ```
@@ -214,10 +229,13 @@ https://your-api-id.execute-api.region.amazonaws.com
 ### Endpoints
 
 #### Get All Users
+
 ```http
 GET /users
 ```
+
 **Response:**
+
 ```json
 [
   {
@@ -230,6 +248,7 @@ GET /users
 ```
 
 #### Create User
+
 ```http
 POST /users
 Content-Type: application/json
@@ -241,6 +260,7 @@ Content-Type: application/json
 ```
 
 #### Bulk Create Users
+
 ```http
 POST /users/bulk
 Content-Type: application/json
@@ -249,21 +269,28 @@ Content-Type: application/json
   "count": 10
 }
 ```
+
 - Min: 1, Max: 100 users
 - Generates random users with Faker.js
 
 #### Search Users
+
 ```http
 GET /users/search?q=john
 ```
+
 **Query Parameters:**
+
 - `q` - Search query (matches name or email)
 
 #### Get Statistics
+
 ```http
 GET /users/stats
 ```
+
 **Response:**
+
 ```json
 {
   "totalUsers": 42,
@@ -274,17 +301,21 @@ GET /users/stats
 ```
 
 #### Export Users
+
 ```http
 GET /users/export
 ```
+
 Returns formatted JSON file with all users
 
 #### Get User by ID
+
 ```http
 GET /users/{id}
 ```
 
 #### Update User
+
 ```http
 PUT /users/{id}
 Content-Type: application/json
@@ -296,6 +327,7 @@ Content-Type: application/json
 ```
 
 #### Delete User
+
 ```http
 DELETE /users/{id}
 ```
@@ -329,12 +361,14 @@ curl https://your-api-url/users/export > users.json
 ```
 
 ### Run Frontend in Development
+
 ```bash
 cd nextjs-frontend-app
 npm run dev
 ```
 
 ### Build Frontend for Production
+
 ```bash
 npm run build
 npm start
@@ -343,11 +377,15 @@ npm start
 ## 🌍 Environment Variables
 
 ### Backend (Lambda)
+
 Set automatically by CDK:
+
 - `TABLE_NAME` - DynamoDB table name
 
 ### Frontend
+
 Edit `lib/api.ts`:
+
 ```typescript
 const API_URL = "https://your-api-gateway-url.amazonaws.com";
 ```
@@ -355,12 +393,14 @@ const API_URL = "https://your-api-gateway-url.amazonaws.com";
 ## 📦 Deployment
 
 ### Deploy Both Stacks
+
 ```bash
 cd aws-users-api
 npm run cdk -- deploy --all
 ```
 
 ### Deploy Individual Stacks
+
 ```bash
 # Database only
 npm run cdk -- deploy DynamoDBStack
@@ -370,6 +410,7 @@ npm run cdk -- deploy UsersApiStack
 ```
 
 ### Destroy Infrastructure
+
 ```bash
 npm run cdk -- destroy --all
 ```
@@ -386,6 +427,7 @@ npm run cdk -- destroy --all
 ## 🎨 UI Screenshots
 
 ### User Management Dashboard
+
 - Statistics cards with real-time counts
 - Bulk actions (create/export)
 - Search bar with live results
@@ -412,15 +454,18 @@ Edit `lib/dynamodb-stack.ts` and add Global Secondary Indexes or change table pr
 ## 🐛 Troubleshooting
 
 ### Frontend can't connect to API
+
 - Verify `API_URL` in `lib/api.ts` matches your deployed endpoint
 - Check CORS configuration in `lib/users-api-stack.ts`
 - Verify API Gateway is deployed successfully
 
 ### Lambda timeout errors
+
 - Increase timeout in `lib/users-api-stack.ts` (default: 30s)
 - Check CloudWatch Logs for detailed error messages
 
 ### DynamoDB throttling
+
 - Consider switching from PAY_PER_REQUEST to PROVISIONED mode
 - Add auto-scaling configuration
 

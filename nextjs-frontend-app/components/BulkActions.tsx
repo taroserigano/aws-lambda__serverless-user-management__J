@@ -29,7 +29,7 @@ export function BulkActions() {
     try {
       setExporting(true);
       const users = await userApi.exportUsers();
-      
+
       // Create a blob from the data and trigger download
       const blob = new Blob([JSON.stringify(users, null, 2)], {
         type: "application/json",
